@@ -8,13 +8,13 @@ function Sidebar() {
       <nav>
         <ul>
           <li>
-            <Link to="/lessons">Lesson Form</Link>
+            <Link to="/lessons">Lesson </Link>
           </li>
           <li>
-            <Link to="/students">Student Form</Link>
+            <Link to="/students">Student </Link>
           </li>
           <li>
-            <Link to="/exams">Exam Form</Link>
+            <Link to="/exams">Exam </Link>
           </li>
         </ul>
       </nav>
