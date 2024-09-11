@@ -8,10 +8,10 @@ function Sidebar() {
       <nav>
         <ul>
           <li>
-            <Link to="/lessons">Lesson </Link>
+            <Link to="/students">Student </Link>
           </li>
           <li>
-            <Link to="/students">Student </Link>
+            <Link to="/lessons">Lesson </Link>
           </li>
           <li>
             <Link to="/exams">Exam </Link>
