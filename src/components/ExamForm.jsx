@@ -23,7 +23,7 @@ function ExamForm() {
       <input
         type="text"
         name="lessonCode"
-        placeholder="Lesson Code (char(3))"
+        placeholder="Lesson Code "
         value={exam.lessonCode}
         onChange={handleChange}
         required
@@ -31,7 +31,7 @@ function ExamForm() {
       <input
         type="number"
         name="studentNumber"
-        placeholder="Student Number (number(5,0))"
+        placeholder="Student Number "
         value={exam.studentNumber}
         onChange={handleChange}
         required
@@ -46,7 +46,7 @@ function ExamForm() {
       <input
         type="number"
         name="grade"
-        placeholder="Grade (number(1,0))"
+        placeholder="Grade "
         value={exam.grade}
         onChange={handleChange}
         required
