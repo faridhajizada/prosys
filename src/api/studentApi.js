@@ -12,8 +12,19 @@ export const studentApi = baseQuery.injectEndpoints({
       }),
       providesTags: ["Students"],
     }),
+    addStudent: builder.mutation({
+      query: (student) => ({
+        url: `/api/students`,
+        method: "POST",
+        headers: {
+          Accept: "application/json",
+        },
+        body: student,
+      }),
+      invalidatesTags: ["Students"],
+    }),
   }),
   overrideExisting: false,
 });
 
-export const { useGetStudentsQuery } = studentApi;
+export const { useGetStudentsQuery, useAddStudentMutation } = studentApi;
