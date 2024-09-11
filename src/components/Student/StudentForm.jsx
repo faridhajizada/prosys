@@ -1,18 +1,19 @@
-import React, { useState } from 'react';
-import { useAddStudentMutation } from './../../api/studentApi';
+import React, { useState } from "react";
+import { useAddStudentMutation } from "./../../api/studentApi";
 
-function StudentForm() {
+const StudentForm = React.memo(() => {
   const [student, setStudent] = useState({
-    number: '',
-    firstName: '',
-    lastName: '',
-    class: '', 
+    number: "",
+    firstName: "",
+    lastName: "",
+    class: "",
   });
 
   const [addStudent, { isLoading, error, isSuccess }] = useAddStudentMutation();
 
   const handleChange = (e) => {
     const { name, value } = e.target;
+    if ((name === "number" || name === "class") && value < 0) return;
     setStudent((prevStudent) => ({
       ...prevStudent,
       [name]: value,
@@ -29,17 +30,27 @@ function StudentForm() {
       class: Number(student.class),
     };
 
-    if (!validStudent.number || !validStudent.firstName || !validStudent.lastName || !validStudent.class) {
-      alert('Please fill in all fields correctly.');
+    // Validation to prevent empty or negative values
+    if (
+      !validStudent.number ||
+      !validStudent.firstName ||
+      !validStudent.lastName ||
+      !validStudent.class ||
+      validStudent.number < 0 ||
+      validStudent.class < 0
+    ) {
+      alert(
+        "Please fill in all fields correctly and ensure numbers are non-negative."
+      );
       return;
     }
 
     try {
       await addStudent(validStudent).unwrap();
-      setStudent({ number: '', firstName: '', lastName: '', class: '' });
+      setStudent({ number: "", firstName: "", lastName: "", class: "" });
     } catch (err) {
-      console.error('Failed to save the student: ', err);
-      alert(`Error: ${err.data?.message || 'Unknown error'}`);
+      console.error("Failed to save the student: ", err);
+      alert(`Error: ${err.data?.message || "Unknown error"}`);
     }
   };
 
@@ -56,6 +67,7 @@ function StudentForm() {
             value={student.number}
             onChange={handleChange}
             required
+            min="0" // Prevent negative values in the input
           />
         </div>
         <div className="mb-3">
@@ -89,10 +101,11 @@ function StudentForm() {
             value={student.class}
             onChange={handleChange}
             required
+            min="0"
           />
         </div>
         <button type="submit" className="btn btn-primary" disabled={isLoading}>
-          {isLoading ? 'Registering...' : 'Register Student'}
+          {isLoading ? "Registering..." : "Register Student"}
         </button>
         {isSuccess && (
           <div className="alert alert-success mt-3">
@@ -101,12 +114,13 @@ function StudentForm() {
         )}
         {error && (
           <div className="alert alert-danger mt-3">
-            Failed to register student. {error.data?.message || 'Please try again.'}
+            Failed to register student.{" "}
+            {error.data?.message || "Please try again."}
           </div>
         )}
       </form>
     </div>
   );
-}
+});
 
 export default StudentForm;

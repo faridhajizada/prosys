@@ -17,7 +17,28 @@ export const studentApi = baseQuery.injectEndpoints({
         url: `/api/students`,
         method: "POST",
         headers: {
+          "Content-Type": "application/json",
+        },
+        body: student,
+      }),
+      invalidatesTags: ["Students"],
+    }),
+    deleteStudent: builder.mutation({
+      query: (studentNumber) => ({
+        url: `/api/students/${studentNumber}`,
+        method: "DELETE",
+        headers: {
           Accept: "application/json",
+        },
+      }),
+      invalidatesTags: ["Students"],
+    }),
+    editStudent: builder.mutation({
+      query: (student) => ({
+        url: `/api/students/${student.number}`,
+        method: "PUT",
+        headers: {
+          "Content-Type": "application/json",
         },
         body: student,
       }),
@@ -27,4 +48,9 @@ export const studentApi = baseQuery.injectEndpoints({
   overrideExisting: false,
 });
 
-export const { useGetStudentsQuery, useAddStudentMutation } = studentApi;
+export const {
+  useGetStudentsQuery,
+  useAddStudentMutation,
+  useDeleteStudentMutation,
+  useEditStudentMutation,
+} = studentApi;
