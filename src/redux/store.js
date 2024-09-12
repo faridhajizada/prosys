@@ -9,7 +9,8 @@ const store = configureStore({
     [lessonApi.reducerPath]: lessonApi.reducer,
   },
   middleware: (getDefaultMiddleware) =>
-    getDefaultMiddleware().concat(studentApi.middleware),
+    getDefaultMiddleware().concat(studentApi.middleware, lessonApi.middleware),
+
 });
 
 setupListeners(store.dispatch);

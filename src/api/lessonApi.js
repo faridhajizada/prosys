@@ -10,22 +10,22 @@ export const lessonApi = baseQuery.injectEndpoints({
           Accept: "application/json",
         },
       }),
-      providesTags: ["Students"],
+      providesTags: ["Lessons"],
     }),
     addLesson: builder.mutation({
-      query: (lessons) => ({
+      query: (lesson) => ({
         url: `/api/lessons`,
         method: "POST",
         headers: {
           "Content-Type": "application/json",
         },
-        body: lessons,
+        body: lesson,
       }),
       invalidatesTags: ["Lessons"],
     }),
     deleteLesson: builder.mutation({
-      query: (lessons) => ({
-        url: `/api/lessons/${lessons}`,
+      query: (lessonCode) => ({
+        url: `/api/lessons/${lessonCode}`,
         method: "DELETE",
         headers: {
           Accept: "application/json",
@@ -34,13 +34,13 @@ export const lessonApi = baseQuery.injectEndpoints({
       invalidatesTags: ["Lessons"],
     }),
     editLesson: builder.mutation({
-      query: (lessons) => ({
-        url: `/api/lessons/${lessons.code}`,
+      query: (lesson) => ({
+        url: `/api/lessons/${lesson.code}`,
         method: "PUT",
         headers: {
           "Content-Type": "application/json",
         },
-        body: lessons,
+        body: lesson,
       }),
       invalidatesTags: ["Lessons"],
     }),
@@ -51,6 +51,6 @@ export const lessonApi = baseQuery.injectEndpoints({
 export const {
   useGetLessonQuery,
   useAddLessonMutation,
-  useDeLessonMutation,
+  useDeleteLessonMutation,
   useEditLessonMutation,
 } = lessonApi;
