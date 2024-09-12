@@ -117,6 +117,7 @@ const LessonList = React.memo(() => {
                     value={lessonData.class}
                     onChange={handleChange}
                     min="0"
+                    max="12"
                   />
                 ) : (
                   lesson.class

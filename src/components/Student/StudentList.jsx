@@ -121,6 +121,7 @@ const StudentList = React.memo(() => {
                       value={studentData.class}
                       onChange={handleChange}
                       min="0"
+                      max="12"
                     />
                   ) : (
                     student.class

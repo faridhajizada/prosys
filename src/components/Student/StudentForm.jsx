@@ -101,6 +101,7 @@ const StudentForm = React.memo(() => {
             onChange={handleChange}
             required
             min="0"
+            max="12"
           />
         </div>
         <button type="submit" className="btn btn-primary" disabled={isLoading}>

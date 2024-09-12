@@ -97,6 +97,7 @@ const LessonForm = React.memo(() => {
             onChange={handleChange}
             required
             min="0"
+            max="12"
           />
         </div>
         <div className="mb-3">
