@@ -60,10 +60,13 @@ const StudentList = React.memo(() => {
     );
   }
 
-  if (error) {
+  if (data.length === 0) {
     return (
-      <div className="alert alert-danger" role="alert">
-        Error: {error.message || "Unable to fetch students"}
+      <div className="container mt-4">
+        <h2 className="mb-4">Student List</h2>
+        <div className="alert alert-info" role="alert">
+          No students found.
+        </div>
       </div>
     );
   }

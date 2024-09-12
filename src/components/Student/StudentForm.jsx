@@ -30,7 +30,6 @@ const StudentForm = React.memo(() => {
       class: Number(student.class),
     };
 
-    // Validation to prevent empty or negative values
     if (
       !validStudent.number ||
       !validStudent.firstName ||
@@ -67,7 +66,7 @@ const StudentForm = React.memo(() => {
             value={student.number}
             onChange={handleChange}
             required
-            min="0" // Prevent negative values in the input
+            min="0" 
           />
         </div>
         <div className="mb-3">
