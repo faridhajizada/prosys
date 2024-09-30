@@ -7,6 +7,7 @@ import Loading from "./components/Loading/Loading";
 const Lesson = lazy(() => import("./page/Lesson/Lesson"));
 const Student = lazy(() => import("./page/Student/Student"));
 const Exam = lazy(() => import("./page/Exam/Exam"));
+const ImageTest = lazy(() => import("./page/ImageTest/ImageTest"));
 
 function App() {
   return (
@@ -21,6 +22,7 @@ function App() {
               <Route path="/lessons" element={<Lesson />} />
               <Route path="/students" element={<Student />} />
               <Route path="/exams" element={<Exam />} />
+              <Route path="/image" element={<ImageTest />} />
               <Route path="*" element={<div>Not Found</div>} />
             </Routes>
           </Suspense>

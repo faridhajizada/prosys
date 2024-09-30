@@ -16,6 +16,9 @@ function Sidebar() {
           <li>
             <Link to="/exams">Exam </Link>
           </li>
+          <li>
+            <Link to="/image">Image Test </Link>
+          </li>
         </ul>
       </nav>
     </div>
